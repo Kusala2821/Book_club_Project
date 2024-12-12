@@ -4,7 +4,7 @@
 ##### 1.Kusala Nagamani Reddy
 
 #### Narrative or Description:
-###### The Book Club Management Application is a Flask web-based platform designed to streamline the operations of an online book club. The application serves two primary user roles: Users and Admin.
+###### The Book Club Management Application is a Flask and myPHPAdmin web-based platform designed to streamline the operations of an online book club. The application serves two primary user roles: Users and Admin.
 
 #### Users can: 
 ###### 1.Able to Register and login the page
