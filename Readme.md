@@ -19,17 +19,7 @@
 
 ##### The Admin Dashboard provides key insights such as total sales, top-selling books, and active user metrics, along with graphical visualizations for better decision-making.
 
-#### User Table and Roles:
-
-| Username             | Password | Role | Purpose|  
-  |--------------------|--------------|------------------------|-----------------------|  
-  | Datadriven| kusala2821  | 'user'     | Browse books,add the books to cart and order the books      |  
-  | tylerc@clarkson.edu  | professor    | 'user'      | Browse books,add the books to cart and order the books       |  
-  | sita | Amma    | 'user'      | Browse books,add the books to cart and order the books       |  
-  | garshankumar6@gmail.com  | garshan    | 'user'      | Browse books,add the books to cart and order the books       |  
-  | Kusala  | admin123   | 'Admin'      | Manage books,Add,update and delete the books.
-  
-  
+ 
 #### Relational Schema: 
 
 ![Relational Schema](relational.png)
