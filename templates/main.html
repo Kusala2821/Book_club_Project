@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <style>
+        .navbar {
+            background-color: #0a1a2a; 
+            color: white;
+            padding: 7px 7px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            color: khaki;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar .logo img {
+            width: 100px;
+            height: 40px;
+            padding-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 40px;
+            padding-right: 10px;
+        }
+
+        .navbar .nav-links a {
+            color: whitesmoke;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar .nav-links a:hover {
+            color: lightgray;
+        }
+
+        .cart-icon {
+            margin-left: 1px;
+            width: 25px;
+            height: 21px;
+        }
+
+        .background {
+            margin-top: 60px; /* Push below the navbar */
+            background-image: url("{{ url_for('static', filename='images/bg.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            height: calc(98vh - 80px); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .background h1 {
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for readability */
+        }
+
+        .background p {
+            font-size: 20px;
+            margin-top: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow */
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <a href="#" class="logo">
+            <strong>
+            <img src="{{ url_for('static', filename='images/logoo.jpg') }}" alt="Logo" class="img-responsive" style="position:relative; top:10px;" aria-label="E-Book Store Logo">
+            Open a Book, Open Your Mind....
+        </strong>
+        </a>
+        <nav class="nav-links">
+            <a href="/books">Books</a>
+            <a href="/cart">
+                Cart
+                <img src="{{ url_for('static', filename='images/cart.png') }}" alt="Cart Icon" class="cart-icon">
+            </a>
+            <a href="/orders">Orders</a>
+            <a href="/Logout">Logout</a>
+        </nav>
+    </header>
+
+    <div class="background">
+        <div>
+            <h1>Welcome to the Book Club</h1>
+            <p>This project is a Flask-based web application designed for book enthusiasts to manage books, view available books</p>
+            <p>add them to their cart, and place orders.</p>
+        </div>
+    </div>
+</body>
+</html>

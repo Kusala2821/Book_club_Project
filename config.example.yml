@@ -1,0 +1,11 @@
+db:
+  host: 'myhost.org'
+  user: 'username'
+  passwd: 'password123'
+  db: 'yourdbname'
+  port: 3306
+tables:
+  User: 'user'
+  Book: 'book'
+  Cart: 'cart'
+  Order: 'orders'

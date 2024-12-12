@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <a href="#" class="logo">
+            <strong>
+            <img src="{{ url_for('static', filename='images/logoo.jpg') }}" alt="Logo" class="img-responsive" style="position:relative; top:10px;" aria-label="E-Book Store Logo">
+            Open a Book, Open Your Mind....
+        </strong>
+        </a>
+        <nav class="nav-links">
+            <a href="/main">Home</a>
+            <a href="/books">Books</a>
+            <a href="/cart">
+                Cart
+                <img src="{{ url_for('static', filename='images/cart.png') }}" alt="Cart Icon" class="cart-icon">
+            </a>
+            <a href="/orders">Orders</a>
+            <a href="/Logout">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Checkout</h1>
+        <p><strong>Hello, {{ username }}</strong></p>
+        <div class="checkout-layout">
+            <!-- Added id="checkout-form" -->
+            <form id="checkout-form" action="/checkout" method="POST" class="checkout-form">
+                <h2>Billing Details</h2>
+                <div class="form-group">
+                    <label for="card_number">Card Number:</label>
+                    <input type="text" id="card_number" name="card_number" maxlength="16" required>
+                </div>
+                <div class="form-group">
+                    <label for="card_name">Name on Card:</label>
+                    <input type="text" id="card_name" name="card_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="card_cvv">CVV:</label>
+                    <input type="text" id="card_cvv" name="card_cvv" maxlength="3" required>
+                </div>
+                <div class="form-group">
+                    <label for="card_expiry">Expiry Date (MM/YYYY):</label>
+                    <input type="text" id="card_expiry" name="card_expiry" maxlength="7" required>
+                </div>
+                <h2>Shipping Address</h2>
+                <div class="form-group">
+                    <label for="street_address">Street Address:</label>
+                    <textarea id="street_address" name="street_address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="zip_code">ZIP Code:</label>
+                    <input type="text" id="zip_code" name="zip_code" required>
+                </div>
+            </form>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <p><strong>Items Total:</strong> ${{ items_total }}</p>
+                <p><strong>Shipping:</strong> ${{ shipping_fee }}</p>
+                <p><strong>Tax:</strong> ${{ tax }}</p>
+                <p><strong>Total:</strong> ${{ total_price }}</p>
+                <!-- Button references the form id -->
+                <button type="submit" form="checkout-form" class="btn btn-primary">Place Order</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

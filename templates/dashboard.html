@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin: 0;
+        }
+
+        section {
+            margin: 20px auto;
+            width: 80%;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0073e6;
+            margin-bottom: 10px;
+        }
+
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .chart {
+            width: 45%;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Admin Dashboard</h1>
+    <section>
+        <h2>Visual Analytics</h2>
+        <div class="chart-container">
+            <div class="chart">
+                <canvas id="totalSalesChart"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="topSellingBooksChart"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="activeUsersChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Pass data dynamically from Flask
+        const totalSales = JSON.parse('{{ total_sales | safe }}');
+        const topSellingBooks = JSON.parse('{{ top_selling_books | tojson | safe }}');
+        const activeUsers = JSON.parse('{{ active_users | tojson | safe }}');
+    
+        // Total Sales Chart
+        const ctxTotalSales = document.getElementById('totalSalesChart').getContext('2d');
+        new Chart(ctxTotalSales, {
+            type: 'bar',
+            data: {
+                labels: ['Total Sales'],
+                datasets: [{
+                    label: 'Total Sales ($)',
+                    data: [totalSales],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    
+        // Top Selling Books Chart
+        const ctxTopBooks = document.getElementById('topSellingBooksChart').getContext('2d');
+        new Chart(ctxTopBooks, {
+            type: 'pie',
+            data: {
+                labels: topSellingBooks.map(book => book.title),
+                datasets: [{
+                    label: 'Top Selling Books',
+                    data: topSellingBooks.map(book => book.total_quantity),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    
+        // Active Users Chart
+        const ctxActiveUsers = document.getElementById('activeUsersChart').getContext('2d');
+        new Chart(ctxActiveUsers, {
+            type: 'bar',
+            data: {
+                labels: activeUsers.map(user => user.username),
+                datasets: [{
+                    label: 'Active Users (Orders)',
+                    data: activeUsers.map(user => user.order_count),
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            background-color: #0a1a2a; 
+            color: white;
+            padding: 7px 7px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            color: khaki;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar .logo img {
+            width: 100px;
+            height: 40px;
+            padding-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .navbar .nav-links a {
+            color: whitesmoke;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar .nav-links a:hover {
+            color: lightgray;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 50%;
+            overflow: hidden;
+        }
+
+        .slideshow-container img {
+            width: 75%;
+            border-radius: 8px;
+        }
+
+        .text-content {
+            max-width: 50%;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .text-content h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .text-content p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .text-content p:last-child {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#" class="logo">
+            <strong>
+            <img src="{{ url_for('static', filename='images/logoo.jpg') }}" alt="Logo" class="img-responsive" style="position:relative; top:10px;" aria-label="E-Book Store Logo">
+            Open a Book, Open Your Mind....
+        </strong>
+        </a>
+        <nav class="nav-links">
+            <a href="/main">Home</a>
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+            </a>
+        </nav>
+    </header>
+    
+    <div class="content-container">
+        <!-- Left: Slideshow -->
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="{{ url_for('static', filename='images/homeimage1.jpg') }}" alt="Image 1">
+            </div>
+            <div class="slide fade">
+                <img src="{{ url_for('static', filename='images/homeimage2.jpg') }}" alt="Image 2"style="margin-left: 70px";>
+            </div>
+            <div class="slide fade">
+                <img src="{{ url_for('static', filename='images/homeimage3.jpg') }}" alt="Image 3" width="1000px" height="550px" style="margin-left: 100px;">
+            </div>
+        </div>
+
+        <!-- Right: Text -->
+        <div class="text-content">
+            <h1 style="font-family: 'Brush Script MT', cursive; font-size: xx-large;">Welcome to the Book Club!</h1>
+            <p style="font-family: 'Brush Script MT', cursive; font-weight: 150; font-size: x-large;">We're thrilled to have you join our community of passionate readers. Dive into a world of captivating stories, thought-provoking discussions, and shared literary adventures.Whether you're into timeless classics or the latest bestsellers, there's a place for you here. Let's explore new horizons together, one page at a time.</p>
+            <p style="font-family: 'Brush Script MT', cursive; font-weight: 150; font-size: x-large;">Happy Reading!</p>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.querySelectorAll(".slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+    </script>
+
+</body>
+</html>

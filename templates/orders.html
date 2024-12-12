@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Orders</title>
+    <style>
+         .navbar {
+            background-color: #0a1a2a; 
+            color: white;
+            padding: 6px 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            color: khaki;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar .logo img {
+            width: 100px;
+            height: 40px;
+            padding-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 40px;
+            padding-right: 10px;
+        }
+
+        .navbar .nav-links a {
+            color: whitesmoke;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar .nav-links a:hover {
+            color: lightgray;
+        }
+        .cart-icon {
+            margin-left:1px;
+            width: 25px;
+            height: 21px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            padding: 40px 40px;
+            text-align: center;
+            color: #333;
+        }
+        .orders {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .order {
+            border-bottom: 1px solid #ddd;
+            padding: 5px 0;
+        }
+        .order:last-child {
+            border-bottom: none;
+        }
+        .order-details {
+            margin: 5px 0;
+        }
+        .order-date {
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <a href="#" class="logo">
+            <strong>
+            <img src="{{ url_for('static', filename='images/logoo.jpg') }}" alt="Logo" class="img-responsive" style="position:relative; top:10px;" aria-label="E-Book Store Logo">
+            Open a Book, Open Your Mind....
+        </strong>
+        </a>
+        <nav class="nav-links">
+            <a href="/main">Home</a>
+            <a href="/books">Books</a>
+            <a href="/cart">
+                Cart
+                <img src="{{ url_for('static', filename='images/cart.png') }}" alt="Cart Icon" class="cart-icon">
+            </a>
+            <a href="/Logout">Logout</a>
+        </nav>
+    </header>
+    <h1>Your Orders</h1>
+    <div class="orders">
+        {% if orders %}
+            {% for order in orders %}
+            <div class="order">
+                <p><strong>Order ID:</strong> {{ order['id'] }}</p>
+                <p class="order-details"><strong>Address:</strong> {{ order['street_address'] }}, {{ order['city'] }}, {{ order['state'] }} - {{ order['zip_code'] }}</p>
+                <p class="order-date"><strong>Date:</strong> {{ order['created_at'] }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No orders found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

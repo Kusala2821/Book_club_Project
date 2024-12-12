@@ -1,0 +1,166 @@
+/* CSS for register.html */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body, html {
+    font-family: Arial,sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../images/background3.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.register-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(50px);
+    width: 350px; /* Reduced width to make the box smaller */
+    text-align: center;
+    position: relative;
+}
+
+.container h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-form .icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.register-form .icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.register-form h2 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.register-form input {
+    width: 100%;
+    max-width: 300px; /* Set max-width for input fields */
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    background: none;
+    color: #fff;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 15px; /* Reduced margin to make the form more compact */
+}
+
+.input-box i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-20%);
+    color: #fff;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.input-box input::placeholder {
+    color: white;
+}
+
+.register-form button {
+    width: 100%;
+    max-width: 300px; /* Set max-width for button */
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.1s ease;
+    margin: 10px 0; /* Add space above/below the button */
+}
+
+.register-form button:hover {
+    background-color: #0056b3;
+}
+
+.register-form p {
+    margin-top: 15px;
+    color: #fff;
+}
+
+.register-form p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-form p a:hover {
+    text-decoration: underline;
+}
+
+.form-group select option {
+    color: black; 
+}
+
+.form-group {
+    margin-bottom: 15px; /* Reduced spacing between form fields */
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    appearance: none; 
+}
+
+.form-group select:focus {
+    border-color: #fff;
+    outline: none;
+}
+
+.form-group select option[disabled] {
+    color: #ccc;
+}
+
+.form-group label {
+    color: #fff;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        .navbar {
+            background-color: #0a1a2a; 
+            color: white;
+            padding: 7px 7px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed; /* Make the navbar fixed */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            color: khaki;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar .logo img {
+            width: 100px;
+            height: 40px;
+            padding-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 40px;
+            padding-right: 10px;
+        }
+
+        .navbar .nav-links a {
+            color: whitesmoke;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar .nav-links a:hover {
+            color: lightgray;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 50px 0 0 0; 
+            background-color: #f4f4f4;
+            height: 100vh;
+        }
+
+        .admin-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: #b8860b;
+            animation: moveText 5s linear infinite; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+
+        }
+
+        @keyframes moveText {
+            0% { transform: translate(-50%, -50%) translateX(0); }
+            50% { transform: translate(-50%, -50%) translateX(50px); }
+            100% { transform: translate(-50%, -50%) translateX(0); }
+        }
+
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <a href="#" class="logo">
+            <strong>
+                <img src="{{ url_for('static', filename='images/logoo.jpg') }}" alt="Logo" class="img-responsive" style="position:relative; top:10px;" aria-label="E-Book Store Logo">
+                Open a Book, Open Your Mind....
+            </strong>
+        </a>
+        <nav class="nav-links">
+            <li><a href="/dashboard">Dashboard</a></li>
+            <a href="/managebooks">Manage Books</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <div class="admin-message">
+        <strong>WELCOME TO THE ADMIN PAGE</strong> 
+    </div>
+</body>
+</html>

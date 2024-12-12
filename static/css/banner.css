@@ -1,0 +1,14 @@
+/* Banner Styling */
+.banner {
+    background-image: url('images/banner1.jpg'); /* Use direct path */
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
