@@ -24,6 +24,10 @@
 
 ![Relational Schema](relational.png)
 
+#### Home Page
+![Uploading image.png…]()
+
+
 #### Analytical Queries in Admin Dashboard:
 
 #### 1.Total sales:
